@@ -147,6 +147,9 @@ export default function App() {
   // Switch mode between demo and live BigQuery
   const handleSwitchMode = async (mode: 'demo' | 'bigquery') => {
     try {
+      showToast(`Switching to ${mode === 'bigquery' ? 'LIVE BIGQUERY' : 'SYNTHETIC DEMO'}...`);
+      setLoadingOverview(true);
+      setLoadingHotspots(true);
       const res = await fetch('/api/switch-mode', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -154,18 +157,25 @@ export default function App() {
       });
       const data = await res.json();
       if (data.success) {
-        showToast(`Switched active mode to ${mode.toUpperCase()}`);
-        fetchHealth();
-        fetchOverview();
-        fetchHotspots(hotspotType);
-        if (currentInvestigation) {
-          runInvestigation(currentInvestigation.investigationId as SupportedInvestigationId);
+        if (data.health) {
+          setHealth(data.health);
         }
+        await Promise.all([
+          fetchHealth(),
+          fetchOverview(),
+          fetchHotspots(hotspotType),
+          runInvestigation('time-of-day-risk').then((r) => { if (r) setDiscoveryResult(r); }),
+          currentInvestigation ? runInvestigation(currentInvestigation.investigationId as SupportedInvestigationId) : Promise.resolve(),
+        ]);
+        showToast(`Active mode: ${mode === 'bigquery' ? 'LIVE BIGQUERY (Partitioned)' : 'SYNTHETIC DEMO'}`);
       } else {
         showToast(data.message || 'Mode switch failed');
       }
     } catch (err: any) {
       showToast(`Error: ${err.message}`);
+    } finally {
+      setLoadingOverview(false);
+      setLoadingHotspots(false);
     }
   };
 

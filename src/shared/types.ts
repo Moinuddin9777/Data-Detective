@@ -17,36 +17,11 @@ export interface IncidentRecord {
   hour: number | null;
 }
 
-export interface LiveCorridorStation {
-  zone: string;
-  corridor: string;
-  latitude: number;
-  longitude: number;
-  temperatureC: number;
-  precipitationMm: number;
-  windKmh: number;
-  weatherLabel: string;
-  surfaceStatus: 'wet' | 'damp' | 'dry';
-}
-
-export interface LiveTelemetrySnapshot {
-  fetchedAt: string;
-  cityTempC: number;
-  cityPrecipitationMm: number;
-  cityWindKmh: number;
-  weatherSummary: string;
-  surfaceRiskLevel: 'elevated' | 'moderate' | 'normal';
-  advisory: string;
-  stations: LiveCorridorStation[];
-}
-
 export interface OverviewMetrics {
-  sourceMode?: 'LIVE BIGQUERY' | 'SYNTHETIC DEMO';
   incidentCount: number;
   areasCovered: number;
   firstDate: string;
   lastDate: string;
-  lastUpdated?: string;
   highestPriorityArea: {
     area: string;
     incidents: number;
@@ -63,7 +38,6 @@ export interface OverviewMetrics {
     violation: number;
     road_issue: number;
   };
-  liveTelemetry?: LiveTelemetrySnapshot | null;
 }
 
 export interface HotspotRecord {
@@ -75,9 +49,6 @@ export interface HotspotRecord {
   longitude: number | null;
   primaryRoad?: string | null;
   topIncidentType?: string;
-  liveTempC?: number;
-  livePrecipitationMm?: number;
-  surfaceCondition?: 'wet' | 'damp' | 'dry';
 }
 
 export interface InvestigationAIInsight {
@@ -89,7 +60,6 @@ export interface InvestigationAIInsight {
   limitations: string[];
   confidence: 'high' | 'medium' | 'low';
   isAiGenerated: boolean;
-  modelUsed?: string;
 }
 
 export interface InvestigationResult {
@@ -113,7 +83,6 @@ export interface HealthResponse {
   mode: 'live' | 'demo' | 'not_connected';
   sourceMode: 'LIVE BIGQUERY' | 'SYNTHETIC DEMO' | 'NOT CONNECTED';
   bigQueryConnected: boolean;
-  directBigQueryActive?: boolean;
   datasetConfigured: boolean;
   modelConfigured: boolean;
   message: string;
@@ -123,7 +92,6 @@ export interface HealthResponse {
   location?: string;
   modelName?: string;
   hasServiceAccountSecret?: boolean;
-  liveRecordCount?: number;
 }
 
 export type SupportedInvestigationId =

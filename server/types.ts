@@ -1,7 +1,8 @@
-import type {
+import {
   HealthResponse,
   HotspotRecord,
   IncidentRecord,
+  InvestigationResult,
   OverviewMetrics,
   SupportedInvestigationId,
 } from '../src/shared/types.ts';

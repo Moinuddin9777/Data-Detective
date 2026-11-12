@@ -1,6 +1,1 @@
-{
-  "name": "Bengaluru Traffic Detective",
-  "description": "Investigate Bengaluru road-safety and mobility data with evidence-backed insights, BigQuery queries, and AI analysis.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
+{"name":"Bengaluru Traffic Detective","description":"Investigate Bengaluru road-safety and mobility data with evidence-backed insights, BigQuery queries, and AI analysis.","requestFramePermissions":[],"majorCapabilities":["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]}

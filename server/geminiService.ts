@@ -4,11 +4,15 @@ import { InvestigationAIInsight, SupportedInvestigationId } from '../src/shared/
 export class GeminiService {
   private ai: GoogleGenAI | null = null;
   private modelName: string;
+  private fallbackModel: string = 'gemini-3.1-flash-lite';
 
   constructor() {
     const envModel = process.env.GEMINI_MODEL;
-    // Use gemini-2.5-flash or gemini-3.5-flash-lite if available, or fall back
-    this.modelName = envModel || 'gemini-2.5-flash';
+    // Prefer gemini-3.1-flash-lite if gemini-3.8-flash hits daily limits or if specified
+    this.modelName = envModel && envModel.trim() ? envModel.trim() : 'gemini-3.1-flash-lite';
+    if (this.modelName.includes('2.5') || this.modelName.includes('flash-latest')) {
+      this.modelName = 'gemini-3.1-flash-lite';
+    }
     if (process.env.GEMINI_API_KEY) {
       try {
         this.ai = new GoogleGenAI({
@@ -79,10 +83,14 @@ export class GeminiService {
 
     // If Gemini is active, let it classify to the exact enum
     if (this.ai) {
-      try {
-        const response = await this.ai.models.generateContent({
-          model: this.modelName,
-          contents: `Classify this user question into exactly ONE supported investigation ID:
+      const modelsToTry = [this.modelName, this.fallbackModel].filter(
+        (m, i, arr) => arr.indexOf(m) === i
+      );
+      for (const model of modelsToTry) {
+        try {
+          const response = await this.ai.models.generateContent({
+            model,
+            contents: `Classify this user question into exactly ONE supported investigation ID:
 Question: "${question}"
 
 Allowed IDs:
@@ -93,41 +101,42 @@ Allowed IDs:
 - "monthly-trends": Time series across months.
 
 Return valid JSON with keys: "investigationId" (one of the 5 allowed strings) and "confidence" ("high", "medium", or "low").`,
-          config: {
-            responseMimeType: 'application/json',
-            responseSchema: {
-              type: Type.OBJECT,
-              properties: {
-                investigationId: {
-                  type: Type.STRING,
-                  enum: [
-                    'dangerous-junction',
-                    'time-of-day-risk',
-                    'infrastructure-overlap',
-                    'severity-ranking',
-                    'monthly-trends',
-                  ],
+            config: {
+              responseMimeType: 'application/json',
+              responseSchema: {
+                type: Type.OBJECT,
+                properties: {
+                  investigationId: {
+                    type: Type.STRING,
+                    enum: [
+                      'dangerous-junction',
+                      'time-of-day-risk',
+                      'infrastructure-overlap',
+                      'severity-ranking',
+                      'monthly-trends',
+                    ],
+                  },
+                  confidence: {
+                    type: Type.STRING,
+                    enum: ['high', 'medium', 'low'],
+                  },
                 },
-                confidence: {
-                  type: Type.STRING,
-                  enum: ['high', 'medium', 'low'],
-                },
+                required: ['investigationId', 'confidence'],
               },
-              required: ['investigationId', 'confidence'],
             },
-          },
-        });
+          });
 
-        const parsed = JSON.parse(response.text || '{}');
-        if (parsed.investigationId) {
-          return {
-            investigationId: parsed.investigationId as SupportedInvestigationId,
-            confidence: parsed.confidence || 'medium',
-            reason: 'Classified using server-side Gemini semantic mapping.',
-          };
+          const parsed = JSON.parse(response.text || '{}');
+          if (parsed.investigationId) {
+            return {
+              investigationId: parsed.investigationId as SupportedInvestigationId,
+              confidence: parsed.confidence || 'medium',
+              reason: `Classified using Gemini semantic mapping (${model}).`,
+            };
+          }
+        } catch (err: any) {
+          console.warn(`[GeminiService] AI classification error on model ${model}:`, err?.message || err);
         }
-      } catch (err) {
-        console.warn('[GeminiService] AI classification error, falling back to default:', err);
       }
     }
 
@@ -151,8 +160,12 @@ Return valid JSON with keys: "investigationId" (one of the 5 allowed strings) an
     comparisonBaseline?: string
   ): Promise<InvestigationAIInsight> {
     if (this.ai && queryResults && queryResults.length > 0) {
-      try {
-        const prompt = `You are a cautious civic data analyst inspecting Bengaluru urban mobility data.
+      const modelsToTry = [this.modelName, this.fallbackModel].filter(
+        (m, i, arr) => arr.indexOf(m) === i
+      );
+      for (const model of modelsToTry) {
+        try {
+          const prompt = `You are a cautious civic data analyst inspecting Bengaluru urban mobility data.
 Investigation: ${investigationTitle} (ID: ${investigationId})
 Data Mode: ${sourceMode}
 Baseline Reference: ${comparisonBaseline || 'City-wide baseline'}
@@ -169,58 +182,59 @@ Follow these non-negotiable rules:
 4. If in SYNTHETIC DEMO mode, clearly note that the numbers are illustrative demo records.
 5. Provide actionable, practical next steps for civic engineers and safety auditors.`;
 
-        const response = await this.ai.models.generateContent({
-          model: this.modelName,
-          contents: prompt,
-          config: {
-            systemInstruction:
-              'You are a cautious civic data analyst. Use only the supplied query results for numerical statements. Never invent figures, citations, geographic coordinates, travel times, causes or data sources. Differentiate observed association from causation. If the sample is insufficient or a metric is unavailable, say so. Explain in accessible language. Avoid ranking risk based solely on raw counts.',
-            responseMimeType: 'application/json',
-            responseSchema: {
-              type: Type.OBJECT,
-              properties: {
-                headline: { type: Type.STRING },
-                finding: { type: Type.STRING },
-                evidenceBullets: {
-                  type: Type.ARRAY,
-                  items: { type: Type.STRING },
+          const response = await this.ai.models.generateContent({
+            model,
+            contents: prompt,
+            config: {
+              systemInstruction:
+                'You are a cautious civic data analyst. Use only the supplied query results for numerical statements. Never invent figures, citations, geographic coordinates, travel times, causes or data sources. Differentiate observed association from causation. If the sample is insufficient or a metric is unavailable, say so. Explain in accessible language. Avoid ranking risk based solely on raw counts.',
+              responseMimeType: 'application/json',
+              responseSchema: {
+                type: Type.OBJECT,
+                properties: {
+                  headline: { type: Type.STRING },
+                  finding: { type: Type.STRING },
+                  evidenceBullets: {
+                    type: Type.ARRAY,
+                    items: { type: Type.STRING },
+                  },
+                  whyItMatters: { type: Type.STRING },
+                  suggestedActions: {
+                    type: Type.ARRAY,
+                    items: { type: Type.STRING },
+                  },
+                  limitations: {
+                    type: Type.ARRAY,
+                    items: { type: Type.STRING },
+                  },
+                  confidence: {
+                    type: Type.STRING,
+                    enum: ['high', 'medium', 'low'],
+                  },
                 },
-                whyItMatters: { type: Type.STRING },
-                suggestedActions: {
-                  type: Type.ARRAY,
-                  items: { type: Type.STRING },
-                },
-                limitations: {
-                  type: Type.ARRAY,
-                  items: { type: Type.STRING },
-                },
-                confidence: {
-                  type: Type.STRING,
-                  enum: ['high', 'medium', 'low'],
-                },
+                required: [
+                  'headline',
+                  'finding',
+                  'evidenceBullets',
+                  'whyItMatters',
+                  'suggestedActions',
+                  'limitations',
+                  'confidence',
+                ],
               },
-              required: [
-                'headline',
-                'finding',
-                'evidenceBullets',
-                'whyItMatters',
-                'suggestedActions',
-                'limitations',
-                'confidence',
-              ],
             },
-          },
-        });
+          });
 
-        const parsed = JSON.parse(response.text || '{}');
-        if (parsed.headline && parsed.finding) {
-          return {
-            ...parsed,
-            isAiGenerated: true,
-          };
+          const parsed = JSON.parse(response.text || '{}');
+          if (parsed.headline && parsed.finding) {
+            return {
+              ...parsed,
+              isAiGenerated: true,
+            };
+          }
+        } catch (err: any) {
+          console.warn(`[GeminiService] AI generation error on model ${model}:`, err?.message || err);
         }
-      } catch (err) {
-        console.warn('[GeminiService] AI generation error, using deterministic template:', err);
       }
     }
 

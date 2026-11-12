@@ -294,7 +294,9 @@ export class BigQueryRepository implements DataRepository {
 
       let rowsInserted = 0;
       if (currentCount === 0) {
-        const csvPath = path.join(process.cwd(), 'data', 'incidents-demo.csv');
+        const liveCsv = path.join(process.cwd(), 'data', 'incidents-bigquery.csv');
+        const demoCsv = path.join(process.cwd(), 'data', 'incidents-demo.csv');
+        const csvPath = fs.existsSync(liveCsv) ? liveCsv : demoCsv;
         if (fs.existsSync(csvPath)) {
           const content = fs.readFileSync(csvPath, 'utf-8');
           const lines = content.split(/\r?\n/).filter((l) => l.trim().length > 0);
@@ -381,8 +383,15 @@ export class BigQueryRepository implements DataRepository {
     return result;
   }
 
+  public clearCache() {
+    this.queryCache.clear();
+  }
+
   private loadFallbackRecords(): IncidentRecord[] {
-    const csvPath = path.join(process.cwd(), 'data', 'incidents-demo.csv');
+    // Priority: use the dedicated live BigQuery partition dataset if available, otherwise fall back to demo
+    const liveCsvPath = path.join(process.cwd(), 'data', 'incidents-bigquery.csv');
+    const demoCsvPath = path.join(process.cwd(), 'data', 'incidents-demo.csv');
+    const csvPath = fs.existsSync(liveCsvPath) ? liveCsvPath : demoCsvPath;
     if (!fs.existsSync(csvPath)) return [];
     const content = fs.readFileSync(csvPath, 'utf-8');
     const lines = content.split(/\r?\n/).filter((l) => l.trim().length > 0);

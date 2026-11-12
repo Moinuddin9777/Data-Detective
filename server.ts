@@ -101,9 +101,13 @@ app.post('/api/switch-mode', async (req: Request, res: Response) => {
     currentDataMode = 'bigquery';
     if (bqRepo) {
       bqRepo.isConnected = true;
+      bqRepo.clearCache();
     }
   } else {
     currentDataMode = 'demo';
+    if (bqRepo) {
+      bqRepo.clearCache();
+    }
   }
 
   const health = await (bqRepo ? bqRepo.getHealth() : demoRepo.getHealth());
@@ -467,7 +471,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`[Bengaluru Traffic Detective] Server running on http://0.0.0.0:${PORT}`);
+    console.log(`[Bengaluru Traffic Detective] Server running on http://localhost:${PORT}`);
     console.log(`[Bengaluru Traffic Detective] Active Data Mode: ${currentDataMode.toUpperCase()}`);
   });
 }
