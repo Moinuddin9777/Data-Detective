@@ -1,0 +1,31 @@
+{
+  "datasetTitle": "Bengaluru Road Mobility & Safety Incident Registry (Canonical Manifest)",
+  "canonicalTable": "PROJECT_ID.bengaluru_mobility.incidents",
+  "version": "1.0.0",
+  "generatedDate": "2026-11-12",
+  "dataClassification": "SYNTHETIC_WORKSHOP_DEMO",
+  "intendedUse": "Hands-on data investigation workshop for Google AI Studio Build and BigQuery Sandbox.",
+  "sources": [
+    {
+      "sourceName": "OpenCity Bengaluru Urban Mobility Archive (Reference)",
+      "originalUrl": "https://opencity.in/data/bengaluru-traffic-and-road-safety",
+      "license": "Open Data Commons Open Database License (ODbL) / CC-BY 4.0",
+      "retrievedDate": "2026-10-15",
+      "coverage": "Bengaluru BBMP jurisdiction (East, West, South, Mahadevapura, Bommanahalli, Yelahanka)",
+      "notes": "Used as the schema template for canonical incident records. In Demo Mode, all numbers are strictly SYNTHETIC approximations for educational analysis."
+    },
+    {
+      "sourceName": "Bengaluru Traffic Police Safety Reports (Public Notices)",
+      "originalUrl": "https://btp.gov.in/RoadSafety.aspx",
+      "license": "Public Information Disclosure",
+      "retrievedDate": "2026-09-30",
+      "coverage": "Key traffic corridors including Outer Ring Road, Hosur Road, Ballari Road",
+      "notes": "Aggregated statistical categories referenced for realistic categorization of crash types and junction blackspots."
+    }
+  ],
+  "caveats": [
+    "Traffic congestion (speed/travel time) is NOT the same as road crashes. Findings reflect reported incident risk indicators, not live congestion.",
+    "Raw incident counts suffer from population, vehicle volume, and reporting bias. Dense tech corridors often have higher reporting rates.",
+    "Demo Mode dataset contains explicitly labeled synthetic records designed to test BigQuery workflows without incurring external API or billing costs."
+  ]
+}

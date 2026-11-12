@@ -1,0 +1,66 @@
+incident_id,incident_date,area,incident_type,severity,source_name,source_url,latitude,longitude,road_name,description,hour
+SYN-BLR-001,2026-01-04,Silk Board Junction,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,Hosur Road,Two-wheeler skid near underpass slip road,22
+SYN-BLR-002,2026-01-05,KR Puram,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9982,77.6926,Old Madras Road,Rear-end collision during evening peak merge,19
+SYN-BLR-003,2026-01-08,Hebbal Flyover,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0358,77.5970,Airport Elevated Corridor,High-speed median collision past midnight,2
+SYN-BLR-004,2026-01-11,Goraguntepalya,violation,minor,Synthetic OpenCity Demo,https://opencity.in/demo,13.0285,77.5408,Tumkur Road,Lane intrusion and illegal heavy vehicle stop,8
+SYN-BLR-005,2026-01-14,Marathahalli,road_issue,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9562,77.7011,Outer Ring Road,Damaged grating and open trench near bus stop,14
+SYN-BLR-006,2026-01-15,Silk Board Junction,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,Hosur Road,Pedestrian struck at unlit crosswalk gap,23
+SYN-BLR-007,2026-01-18,Tin Factory,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9934,77.6605,Benniganahalli Flyover,Bus and auto sideswipe on acute curve,18
+SYN-BLR-008,2026-01-20,Whitefield,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9857,77.7314,ITPL Main Road,Low-speed fender bender near tech park gate,9
+SYN-BLR-009,2026-01-22,Electronic City,violation,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.8452,77.6602,Hosur Elevated Toll,Over-speeding violation recorded by portal radar,16
+SYN-BLR-010,2026-01-25,Goraguntepalya,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0285,77.5408,Outer Ring Road Junction,Heavy goods vehicle blind-spot collision,4
+SYN-BLR-011,2026-01-27,Bannerghatta Road,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9180,77.5960,Jayadeva Junction,Two-wheeler slipped on loose gravel near metro pillar,21
+SYN-BLR-012,2026-01-30,Mysore Road,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9515,77.5410,Satellite Bus Stand,Pedestrian collision near inter-city terminus,20
+SYN-BLR-013,2026-02-02,Silk Board Junction,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,BTM Layout Ring Road,Auto rickshaw and bike contact at bottleneck,11
+SYN-BLR-014,2026-02-04,KR Puram,road_issue,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9982,77.6926,Hanging Bridge Ramp,Expansion joint asphalt degradation causing abrupt slowdown,15
+SYN-BLR-015,2026-02-06,Hebbal Flyover,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0358,77.5970,Ballari Road Service Lane,Early morning collision at elevated descent,3
+SYN-BLR-016,2026-02-09,Domlur,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9609,77.6387,Intermediate Ring Road,Rear-end collision during rush hour deceleration,18
+SYN-BLR-017,2026-02-12,Marathahalli,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9562,77.7011,Kalamandir Junction,Two-wheeler skid avoiding pedestrian on carriageway,22
+SYN-BLR-018,2026-02-15,Tin Factory,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9934,77.6605,Kasturi Nagar Underpass,Cab and motorcycle contact at weaving merge,19
+SYN-BLR-019,2026-02-17,Goraguntepalya,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0285,77.5408,Yeshwanthpur Industrial Sub-arterial,Truck turn collision with scooter at signal change,23
+SYN-BLR-020,2026-02-20,Majestic,violation,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9772,77.5713,Anand Rao Circle,Signal jumping during morning congestion,10
+SYN-BLR-021,2026-02-23,Silk Board Junction,road_issue,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,Hosur Road Service Road,Water pooling and uneven road surface after unseasonal shower,17
+SYN-BLR-022,2026-02-25,Whitefield,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9857,77.7314,Hope Farm Junction,Collision between water tanker and motorcycle,13
+SYN-BLR-023,2026-02-28,Electronic City,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.8452,77.6602,Phase 1 Service Road,Late night high-speed collision with divider,1
+SYN-BLR-024,2026-03-02,KR Puram,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9982,77.6926,Railway Station Road,Bus and two-wheeler collision at pedestrian crossing,17
+SYN-BLR-025,2026-03-05,Hebbal Flyover,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,13.0358,77.5970,Esteem Mall Junction,Sideswipe during lane merge towards airport ramp,11
+SYN-BLR-026,2026-03-08,Bannerghatta Road,violation,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9180,77.5960,Dairy Circle Road,Wrong side riding into one-way entry,9
+SYN-BLR-027,2026-03-10,Goraguntepalya,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0285,77.5408,Peenya Metro Entry Corridor,Heavy multi-axle freight rear impact,2
+SYN-BLR-028,2026-03-13,Marathahalli,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9562,77.7011,Multiplex Loop Road,Car and auto brush in bumper-to-bumper queue,20
+SYN-BLR-029,2026-03-15,Silk Board Junction,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,Madiwala Lake Road,Loss of traction on diesel spill area,22
+SYN-BLR-030,2026-03-18,Tin Factory,road_issue,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9934,77.6605,Old Madras Road,Temporary barricade narrowing carriageway without warning lights,21
+SYN-BLR-031,2026-03-21,Mysore Road,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9515,77.5410,Deepanjali Nagar Junction,Head-on collision at unfinished road median opening,0
+SYN-BLR-032,2026-03-24,Domlur,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9609,77.6387,EGL Tech Park Access Road,Slow speed cab collision at perimeter turn,12
+SYN-BLR-033,2026-03-27,KR Puram,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9982,77.6926,ITI Gate Junction,Two-wheeler skid during heavy braking,19
+SYN-BLR-034,2026-03-30,Hebbal Flyover,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0358,77.5970,Yelahanka Bypass Ramp,Midnight truck overturn at tight radius loop,1
+SYN-BLR-035,2026-04-02,Silk Board Junction,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,HSR Layout Connector,Rear shunt at queue tail during green signal flush,18
+SYN-BLR-036,2026-04-05,Goraguntepalya,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,13.0285,77.5408,Jalahalli Cross,Delivery van and bike crash at uncontrolled left turn,16
+SYN-BLR-037,2026-04-08,Whitefield,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9857,77.7314,Varthur Road Intersection,Tipper truck blind spot hit on cyclist,7
+SYN-BLR-038,2026-04-11,Electronic City,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.8452,77.6602,Velankani Drive,Sideswipe between corporate shuttle and private car,9
+SYN-BLR-039,2026-04-14,Bannerghatta Road,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9180,77.5960,Meenakshi Mall Road,Motorcycle overspeed collision with road median,23
+SYN-BLR-040,2026-04-17,Marathahalli,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9562,77.7011,Innovative Multiplex,Auto-rickshaw rollover dodging pothole,21
+SYN-BLR-041,2026-04-20,Tin Factory,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9934,77.6605,KR Puram Boundary Ramp,Pedestrian knockdown at unmonitored bus drop point,22
+SYN-BLR-042,2026-04-23,Majestic,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9772,77.5713,KBS Terminal Concourse,City bus rear bumper hit on taxi,14
+SYN-BLR-043,2026-04-26,Silk Board Junction,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,Central Silk Board Underpass,Late night high-speed collision on curved ramp,3
+SYN-BLR-044,2026-04-29,Goraguntepalya,violation,minor,Synthetic OpenCity Demo,https://opencity.in/demo,13.0285,77.5408,National Highway 48,Heavy freight parking on active emergency lane,22
+SYN-BLR-045,2026-05-02,KR Puram,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9982,77.6926,Tin Factory Link,Two-wheeler caught in tandem bus pinch point,19
+SYN-BLR-046,2026-05-05,Hebbal Flyover,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,13.0358,77.5970,Kempapura Junction,Car barrier impact following tire deflation,15
+SYN-BLR-047,2026-05-08,Mysore Road,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9515,77.5410,Bapuji Nagar,Three-vehicle chain collision in sudden rain,17
+SYN-BLR-048,2026-05-11,Domlur,road_issue,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9609,77.6387,100 Feet Road Intermediate,Sunken manhole cover causing vehicle jolts,10
+SYN-BLR-049,2026-05-14,Whitefield,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9857,77.7314,Kundalahalli Gate,Cab door opening contact with cyclist,11
+SYN-BLR-050,2026-05-17,Silk Board Junction,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,BTM Ring Road,Braking failure on slope approaching signal,19
+SYN-BLR-051,2026-05-20,Goraguntepalya,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0285,77.5408,Gordhandas Nagar Flyover,Heavy truck and motorcycle collision on slip road,4
+SYN-BLR-052,2026-05-23,Bannerghatta Road,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9180,77.5960,Arekere Junction,Two-wheeler skid over wet metal utility plate,20
+SYN-BLR-053,2026-05-26,Marathahalli,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9562,77.7011,HAL Airport Road Junction,Midnight high-velocity crash into concrete divider,2
+SYN-BLR-054,2026-05-29,Electronic City,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.8452,77.6602,Infosys Gate 1 Road,Reverse collision in parking approach lane,12
+SYN-BLR-055,2026-06-01,KR Puram,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9982,77.6926,Benniganahalli Underpass,Pedestrian crossing in dark blind spot struck,23
+SYN-BLR-056,2026-06-04,Tin Factory,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9934,77.6605,Kasturi Nagar Road,Goods auto tipped over following swerve,16
+SYN-BLR-057,2026-06-07,Hebbal Flyover,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0358,77.5970,Sanjeevini Nagar Ramp,Speeding car collided with maintenance vehicle,1
+SYN-BLR-058,2026-06-10,Silk Board Junction,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,Outer Ring Road Westbound,Minor rear bump in sluggish bottleneck line,18
+SYN-BLR-059,2026-06-13,Goraguntepalya,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,13.0285,77.5408,Yeshwanthpur Toll Road,Multi-axle truck jackknife incident at dawn,5
+SYN-BLR-060,2026-06-16,Mysore Road,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9515,77.5410,Kengeri Satellite Link,Two-wheeler lost control on rain-slicked rumble strips,21
+SYN-BLR-061,2026-06-19,Whitefield,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9857,77.7314,Graphite India Junction,Collision between mini bus and delivery motorcycle,17
+SYN-BLR-062,2026-06-22,Domlur,violation,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9609,77.6387,Inner Ring Road Junction,Stopline violation with zebra crossing obstruction,9
+SYN-BLR-063,2026-06-25,Majestic,crash,minor,Synthetic OpenCity Demo,https://opencity.in/demo,12.9772,77.5713,Subhash Nagar Circular,Auto and bike mirror clip in tight terminal queue,13
+SYN-BLR-064,2026-06-28,Bannerghatta Road,crash,fatal,Synthetic OpenCity Demo,https://opencity.in/demo,12.9180,77.5960,Gottigere Main Road,Midnight collision at unlit curve,0
+SYN-BLR-065,2026-06-30,Silk Board Junction,crash,serious,Synthetic OpenCity Demo,https://opencity.in/demo,12.9172,77.6228,Central Silk Board Flyover Ramp,Motorcycle slide on wet expansion finger joint,22
